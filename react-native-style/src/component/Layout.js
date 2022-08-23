@@ -6,9 +6,7 @@ const common = css`
     background-color: ${({style}) => style.bgcolor};
     flex:${({style}) => style.flex};
     color${({style}) => style.color};
-    font-weight: bold;
-    font-size:50px;
-`
+`;
 const StyledHeader = styled.View`
     ${common};
     padding-top:50px;
