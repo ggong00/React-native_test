@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import PropTypes from 'prop-types';
-import {useWindowDimensions} from 'react-native';
+import {Dimensions} from 'react-native';
 
 const StyledInput = styled.TextInput.attrs(
     ({placeholder,theme}) => {
@@ -22,17 +22,18 @@ const StyledInput = styled.TextInput.attrs(
 `
 
 const Input = (props) => {
-    const width = useWindowDimensions().width;
+    const width = Dimensions.get('window').width;
     return (
         <StyledInput 
         width={width} 
         value={props.value}
         placeholder={props.placeholder}
-        maxLength={5}
+        maxLength={20}
         autoCapitalize={'none'}
         returnKeyType={'done'}
         onChangeText={props.onChangeText}
         onSubmitEditing={props.onSubmitEditing}
+        onBlur={props.onBlur}
         // multiline={true}
         // numberOfLines={3}
         />
@@ -44,11 +45,12 @@ Input.defaultProps = {
     value:'기본값'
 }
 
-Input.PropTypes = {
+Input.propTypes = {
     value:PropTypes.string,
     placeholder:PropTypes.string.isRequired,
     onChangeText:PropTypes.func.isRequired,
-    onSubmitEditing:PropTypes.func.isRequired
+    onSubmitEditing:PropTypes.func.isRequired,
+    onBlur:PropTypes.func.isRequired
 }
 
 export default Input;
